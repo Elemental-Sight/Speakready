@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="d_script.js" defer></script>
+</head>
+<body>
+    <!-- Thêm Material Icons Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/482131506_9282064115213261_6504878982744023622_n.png?v=1741491795299" 
+             alt="Logo" class="logo-img">
+        <h2 class="project-name">Speak Ready</h2>
+    </div>
+    <a href="#" onclick="showContent('learn')">
+        <i class="fas fa-book-open"></i> Learn
+    </a>
+    <a href="#" onclick="showContent('practice')">
+        <i class="fas fa-pen"></i> Practice
+    </a>
+    <a href="#" onclick="showContent('test')">
+        <i class="fas fa-microphone-lines"></i> Test
+    </a>
+    <a href="#" onclick="showContent('game')">
+        <i class="fas fa-dice"></i> Game
+    </a>
+</div>
+
+
+
+
+    <div class="main-content">
+        <!-- Notification and Account Icons -->
+        <div class="top-right-icons">
+            <a href="#" class="notification-icon"><i class="fas fa-bell"></i></a>
+            <a href="#" class="account-icon"><i class="fas fa-user"></i></a>
+        </div>
+
+        <!-- Overview Section -->
+        <!-- Overview Section -->
+<!-- Thêm class "top-menu-container" để chứa các mục -->
+<div class="top-menu-container">
+    <div class="overview">
+        <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/98-982659_disadvantaged-enterprises-summary-icon-png-white.png?v=1741420195514" alt="Overview Icon"> Overview of the Speak Ready
+    </div>
+    <div class="home">
+        <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/home-icon-silhouette.png?v=1740451121474" alt="Home Icon"> Home
+    </div>
+    <div class="contact">
+        <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/contact-us.png?v=1740451100491" alt="Contact Icon"> Contact
+    </div>
+</div>
+
+      
+
+
+
+
+
+
+        <!-- Main Content with Two Columns -->
+        <div class="content-container">
+            <!-- Left Dynamic Content (Changes based on tab) -->
+            <div class="content" id="content">
+                <h2>Chào mừng bạn đến với Dashboard</h2>
+                <p>Hello</p>
+            </div>
+
+            <!-- Right Static Column (Fixed Cards) -->
+            <div class="right-column">
+    <!-- Thẻ đầu tiên hiển thị từ vựng -->
+        <div class="static-card" id="word-card">
+            <!-- Nội dung sẽ được cập nhật tự động bằng JavaScript -->
+        </div>
+
+        <!-- Các thẻ cố định khác -->
+        <div class="static-card" id="week-progress">
+          
+    <h3 id="progress-title">
+    <i class="fa-solid fa-lightbulb"></i>  Số ngày học trong tuần
+</h3>
+
+
+
+    <div class="week-container">
+    <div class="week-container">
+    <div class="week-row">
+        <div class="day-circle" data-day="1">1</div>
+        <div class="day-circle" data-day="2">2</div>
+        <div class="day-circle" data-day="3">3</div>
+        <div class="day-circle" data-day="4">4</div>
+    </div>
+    <div class="week-row">
+        <div class="day-circle" data-day="5">5</div>
+        <div class="day-circle" data-day="6">6</div>
+        <div class="day-circle" data-day="7">7</div>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+        <div class="static-card">
+    <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/481429161_9577176729009536_2665976885826003258_n.png?v=1741495506926" alt="Hình ảnh thẻ bổ sung">
+</div>
+
+</div>
+
+        </div>
+    </div>
+  
+  
+</body>
+</html>

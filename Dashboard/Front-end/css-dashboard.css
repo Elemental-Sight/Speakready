@@ -1,0 +1,456 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 200px;
+    background: #91C3F5;
+    color: #333333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    max-width: 100%;
+    height: auto;
+    width: 120px;
+    border-radius: 10px;
+}
+
+.sidebar a {
+    color: #222222;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    margin: 5px 0;
+    border-radius: 5px;
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu chữ quá dài */
+    font-weight: bold; /* Chữ đậm hơn */
+    font-size:20px; /* Chữ to hơn */
+}
+
+
+.sidebar a:hover {
+    background: #C4E2FF;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Notification and Account Icons */
+.top-right-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-top: 11px;
+    margin-right: 15px;
+}
+
+.top-right-icons a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+}
+
+.top-right-icons a:hover {
+    color: #007bff;
+}
+
+/* Overview Section */
+.overview {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    background: #f4f4f4;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc; /* Thêm viền */
+    flex: 1; /* Tự động co giãn, không đẩy Home và Contact xuống */
+    margin: 0; /* Xóa margin để tránh bị đẩy */
+    height: 32px;
+}
+
+
+
+
+/* Căn chỉnh phần nội dung và right column */
+.content-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    height: calc(100vh - 40px);
+    overflow: hidden;
+}
+
+/* Nội dung chính (các tab) */
+.content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 400px;
+    min-height: 585px;
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
+    word-wrap: break-word;
+    border: 2px solid #ccc; /* Bo viền */
+    margin-top:10px;
+}
+
+
+/* Right Column */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-top:10px;
+}
+
+/* Các thẻ trong Right Column */
+.static-card {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Kích thước riêng biệt cho từng thẻ */
+.static-card:nth-child(1) { min-height: 350px; }
+.static-card:nth-child(2) { min-height: 200px; }
+.static-card:nth-child(3) { min-height: 250px; }
+
+.word-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.word-card {
+    text-align: center;
+    padding: 10px;
+}
+
+.ipa {
+    font-style: italic;
+    color: #555;
+}
+
+.meaning, .example {
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa icon và nội dung */
+    padding: 15px;
+    min-height: 100px; /* Đặt chiều cao tối thiểu như ban đầu */
+    background: linear-gradient(135deg, #eef7ff, #e3e6f8);
+    border-radius: 12px;
+    border: 1px solid #c2d6ff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng khi hover */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 7px 7px 18px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(135deg, #8ecaf7, #c0a0ff, #f79cd3, #ffc7c7);
+}
+
+
+
+/* Hiệu ứng ánh sáng nhẹ */
+.card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 10%, transparent 80%);
+    transition: all 0.6s ease-out;
+}
+
+.card:hover::before {
+    top: 0;
+    left: 0;
+}
+
+/* Chỉnh màu tiêu đề */
+.card h3 {
+    margin-bottom: 5px;
+    color: #0055aa;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Đổi màu tiêu đề khi hover */
+.card:hover h3 {
+    color: #003366;
+}
+
+/* ICON STYLE */
+.card i {
+    font-size: 40px; /* Icon to hơn một chút */
+    color: #007bff;
+    min-width: 60px; /* Giữ icon cố định để văn bản không lệch */
+    text-align: center;
+}
+
+/* Đổi màu icon khi hover */
+.card:hover i {
+    color: #003366;
+}
+
+
+
+/* Cập nhật màu sắc và kích thước của icon */
+.top-right-icons a {
+    font-size: 28px; /* Tăng kích thước icon */
+}
+
+/* Đảm bảo icon có màu và kích thước như mong muốn */
+.account-icon i, .notification-icon i {
+    font-size: 28px !important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
+}
+
+/* Icon tài khoản */
+.account-icon i {
+    color: dodgerblue !important;
+    border: 2px solid dodgerblue !important;
+}
+
+/* Icon thông báo */
+.notification-icon i {
+    color: gold !important;
+    border: 2px solid gold !important;
+}
+
+/* Hiệu ứng hover */
+.account-icon i:hover {
+    background-color: dodgerblue;
+    color: white !important;
+    border-color: dodgerblue;
+    transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+.notification-icon i:hover {
+    background-color: gold;
+    color: white !important;
+    border-color: gold;
+    transform: scale(1.1);
+}
+
+/* Container chứa các thẻ */
+.top-menu-container {
+    width: 1050px;
+    background-color: transparent; /* Nền trong suốt */
+    border-bottom: none; /* Xóa viền dưới */
+    padding: 10px 0; /* Khoảng cách trên dưới */
+    display: flex; /* Hiển thị theo hàng ngang */
+    justify-content: flex-start; /* Căn trái */
+    gap: 20px; /* Khoảng cách giữa các mục */
+    padding-left: 20px; /* Lề trái */
+    margin-top: -13px;
+}
+
+
+
+/* CSS riêng cho từng thẻ */
+.overview {
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    color: #333; /* Màu chữ */
+}
+
+.home {
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    color: Black; /* Màu xanh */
+    margin-right: -15px;
+    
+}
+
+.contact {
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    color: Black; /* Màu xanh lá */
+}
+
+/* Hiệu ứng hover riêng */
+.overview:hover {
+    background-color: #eaeaea;
+}
+
+.home:hover {
+    background-color: #d4e3fc;
+}
+
+.contact:hover {
+    background-color: #c3e6cb;
+}
+
+.top-menu-container div {
+    display: flex;
+    align-items: center; /* Căn giữa icon với chữ */
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+.top-menu-container div img {
+    width: 20px; /* Điều chỉnh kích thước icon */
+    height: 20px;
+}
+
+.overview img {
+    width: 500px;  /* Điều chỉnh chiều rộng */
+    height: 500px; /* Đảm bảo tỷ lệ ảnh không bị méo */
+}
+
+.week-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.week-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Hàng 1 - không cần lề */
+.week-row:first-child {
+    margin-left: 0;
+}
+
+/* Hàng 2 - thêm lề để tạo hiệu ứng so le */
+.week-row:last-child {
+    margin-left: 5px; /* Điều chỉnh giá trị này để tạo hiệu ứng so le */
+}
+
+.day-circle { 
+    width: 40px; 
+    aspect-ratio: 1/1;
+    border-radius: 50%; 
+    background-color: white; 
+    border: 2px solid #ccc; 
+    color: black; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.3s; 
+} 
+
+.day-circle.active { 
+    background-color: #4CAF50; 
+    color: white; 
+}
+
+
+.sidebar a {
+    display: flex;
+    align-items: center; /* Căn icon với chữ */
+    gap: 10px; /* Khoảng cách giữa icon và chữ */
+}
+
+.sidebar a i {
+    font-size: 20px; /* Đồng bộ kích thước icon */
+    width: 25px; /* Giữ icon có cùng chiều rộng để chữ không lệch */
+    text-align: center; /* Canh giữa icon */
+}
+
+
+#progress-title i {
+    color: #FFA500; /* Màu cam vàng */
+    font-size: 30px; /* Kích thước lớn hơn */
+    text-shadow: 0px 0px 15px rgba(255, 165, 0, 0.9); /* Hiệu ứng phát sáng */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Khi di chuột vào, icon sẽ phóng to và sáng hơn */
+#progress-title i:hover {
+    transform: scale(1.2);
+    text-shadow: 0px 0px 25px rgba(255, 140, 0, 1);
+}
+
+.static-card img {
+    width: 100%;  /* Chiều rộng tối đa */
+    height: auto; /* Giữ tỉ lệ ảnh */
+    border-radius: 10px; /* Bo góc nhẹ */
+    object-fit: cover; /* Hiển thị ảnh đầy đủ trong thẻ */
+}
+
