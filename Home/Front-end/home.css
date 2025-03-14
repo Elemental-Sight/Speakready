@@ -1,0 +1,280 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+header {
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.slider {
+  position: relative;
+  width: 1500px;
+  height: 800px;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.slider button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 24px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #f1c40f;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin: 8px 0;
+}
+
+.footer-column ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #f1c40f;
+}
+
+.social-icons img {
+    width: 32px;
+    margin: 5px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column; /* Xếp icon theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các icon */
+    align-items: center; /* Căn giữa icon */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+}
+
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.social-icons img {
+    width: 24px; /* Điều chỉnh kích thước icon */
+    height: 24px;
+    margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+.footer-column p:first-of-type {
+    text-align: center; /* Dòng "Speak Ready" vẫn căn giữa */
+    font-weight: bold;
+}
+
+.footer-column p:not(:first-of-type) {
+    text-align: left;
+    margin-left: 40px;/* Các dòng khác căn trái */
+}
+
+
+.footer-column a {
+    text-decoration: none; /* Bỏ gạch chân link */
+    color: inherit; /* Giữ màu chữ mặc định */
+}
+
+#home {
+    background-image: url('https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/ielts-examiner-with-a-test-taker-in-speaking-test.jpg?v=1740122257888');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Chiều cao 100% màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Đổi màu chữ nếu cần */
+    padding: 20px;
+}
+
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Cấu hình chung */
+.login-button, .signup-button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng mặc định */
+}
+
+/* Định dạng riêng cho từng nút */
+.login-button {
+    background-color: white;
+    color: black;
+}
+
+.signup-button {
+    background-color: #338cff;
+    color: white;
+}
+
+/* Hiệu ứng hover (di chuột vào) */
+.login-button:hover {
+    background-color: #e0e0e0; /* Chuyển từ trắng sang xám nhạt */
+}
+
+.signup-button:hover {
+    background-color: #0072e6; /* Chuyển từ xanh sang xanh đậm hơn */
+}
+
+/* Hiệu ứng active (nhấn vào) */
+.login-button:active, .signup-button:active {
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Giảm đổ bóng */
+}
+
+/* Ngăn trình duyệt đổi màu khi focus vào nút */
+.login-button:focus, .signup-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.8); /* Đổ bóng xanh khi focus */
+}
+
+.login-button, .signup-button {
+    display: flex;  
+    align-items: center;  /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 8px;  /* Tạo khoảng cách giữa icon và chữ */
+    line-height: 0.8; /* Điều chỉnh chiều cao chữ */
+}
+
+a.login-button, a.signup-button {
+    text-decoration: none; /* Loại bỏ gạch dưới */
+}
+
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+nav {
+    margin-left: 510px; /* Giảm khoảng cách giữa menu và auth-buttons */
+}
