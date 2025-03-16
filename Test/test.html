@@ -1,0 +1,736 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test IELTS</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            width: 100%;
+            background-color: #91C3F5;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            margin-left:20px;
+        }
+        .logo {
+            max-width: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .main-container {
+            width: 90%;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .left, .right {
+            flex: 1;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .mic {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .feedback {
+            border: 1px solid #ddd;
+            height: 100px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        #recordButton {
+            background-color: #f5f5f5;
+            border: 2px solid #f5f5f5;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            font-size: 24px;
+            margin: 20px auto;
+        }
+        #recordButton.recording {
+            background-color: red;
+            border-color: red;
+        }
+        #recordButton.recording::before,
+        #recordButton.recording::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        #recordButton.recording::after {
+            animation-delay: 0.75s;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .timer {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .dropdown-menu li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .dropdown-menu li img {
+            width: 20px;
+            height: 20px;
+        }
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black;
+            flex-grow: 1;
+        }
+        .dropdown-menu li:hover {
+            background-color: #f0f0f0;
+        }
+        .profile-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+      /* Căn chỉnh icon cùng hàng */
+      
+      /* Header chứa menu và icon */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Menu ngang */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 17px;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Căn icon bên phải trên cùng một hàng */
+.top-right-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Style chung cho icon có vòng tròn */
+.top-right-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;  /* Kích thước vòng tròn */
+    height: 35px;
+    border-radius: 50%;  /* Bo tròn hoàn toàn */
+    text-decoration: none;
+}
+
+/* Style icon thông báo (màu vàng, nền trắng) */
+.notification-icon {
+    background-color: 91C3F5;
+    border: 2px solid yellow;
+    color: yellow;
+    font-size: 22px;
+}
+
+/* Style icon tài khoản (màu xanh, nền trắng) */
+.account-icon {
+    background-color: 91C3F5;
+    border: 2px solid #1A73E8;
+    color: blue;
+    font-size: 22px;
+}
+      
+      
+      
+.top-right-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;  /* Kích thước vòng tròn */
+    height: 45px;
+    border-radius: 50%; /* Tạo vòng tròn */
+    background-color: #91C3F5; /* Màu nền */
+}
+
+.top-right-icons i {
+    font-size: 25px; /* Kích thước icon bên trong */
+ /* Màu icon */
+}
+
+/* Căn chỉnh toàn bộ trang */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #F4F6F8;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Câu hỏi IELTS */
+.question-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    background: #E0ECFF;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #4A90E2;
+}
+
+/* Phần phản hồi & chép lại lời */
+.response-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.transcription {
+    width: 600px;
+    height: 150px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #808080;
+    border: 2px solid #86C5DA;
+  
+}
+
+.feedback {
+    width: 600px;
+    background: white;
+    height: 130px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #808080;
+    border: 2px solid #86C5DA;
+}
+
+.transcription h3 {
+    font-size: 16px;
+    color: #4A90E2;
+}
+
+.feedback h3 {
+    font-size: 16px;
+    color: #4A90E2;
+}
+
+
+/* Khu vực nút ghi âm */
+.recording-controls {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#recordButton {
+    background: #FF5252;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#recordButton:hover {
+    background: #D43F3F;
+}
+
+/* Bộ đếm thời gian */
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF5252;
+}
+
+
+.tabs button {
+    padding: 12px 24px; /* Tăng kích thước nút */
+    font-size: 18px; /* Tăng kích thước chữ */
+    background: linear-gradient(45deg, #6A5ACD, #4A90E2, #6FA3EF, #A7C7F5);
+
+
+    color: white; /* Màu chữ */
+    border: 2px solid #0056B3; /* Viền */
+    border-radius: 8px; /* Bo góc */
+    cursor: pointer; /* Con trỏ chuột */
+    transition: 0.3s; /* Hiệu ứng mượt */
+    margin-top: 15px;
+}
+
+.tabs button:hover {
+    background-color: #0056B3; /* Màu khi hover */
+    color: #fff;
+}
+
+      
+/* Chia đôi màn hình */
+.test-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 17px;
+    background: #F4F6F8;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 2px solid #0056B3;
+}
+
+/* Bên trái: Hình AI + Câu hỏi */
+.left-section {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(45deg, #4A90E2, #6FA3EF, #A7C7F5);
+    color: white;
+}
+
+.examiner img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.question {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.question h2 {
+    font-size: 18px;
+}
+
+/* Bên phải: Chép lại bài nói + Feedback */
+.right-section {
+    width: 50%;
+    padding: 20px;
+    background: white;
+}
+
+.transcription, .feedback {
+    background: #E8F0FE;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.transcription h3, .feedback h3 {
+    color: Blue;
+}
+
+/* Nút ghi âm */
+.recording-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#recordButton {
+    background: #FF5252;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#recordButton:hover {
+    background: #D43F3F;
+}
+
+/* Bộ đếm thời gian */
+.timer-container {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF5252;
+    margin-top: 10px;
+}
+
+
+      
+      
+.recording-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+}
+
+#recordButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 1px 12px;
+    font-size: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+#recordButton:hover {
+    background-color: #cc0000;
+}
+
+/* Căn bộ đếm thời gian và audio player trên cùng 1 dòng */
+.timer-audio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    min-width: 60px;
+    text-align: center;
+}
+
+#audioPlayer {
+    width: 200px;
+}
+      
+#recordButton {
+    width: 120px;  /* Điều chỉnh chiều rộng */
+    height: 80px;  /* Điều chỉnh chiều cao */
+    margin-top: 20px;
+}
+
+
+
+    </style>
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let countdownInterval;
+
+        function toggleRecording() {
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+            isRecording = !isRecording;
+        }
+
+        function startRecording() {
+            const recordButton = document.getElementById('recordButton');
+            recordButton.classList.add('recording');
+            recordButton.innerText = "🎙️ Recording";
+
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+                    mediaRecorder.start();
+
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        document.getElementById('audioPlayer').src = audioUrl;
+                        convertSpeechToText(audioBlob);
+                    };
+                });
+
+            startCountdown(5 * 60); // 5 minutes in seconds
+        }
+
+        function stopRecording() {
+            const recordButton = document.getElementById('recordButton');
+            recordButton.classList.remove('recording');
+            recordButton.innerText = "🎙️ Start Recording";
+
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+            }
+
+            clearInterval(countdownInterval);
+        }
+
+        function convertSpeechToText(audioBlob) {
+            const reader = new FileReader();
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = () => {
+                const base64data = reader.result.split(',')[1];
+                const endpoint = 'https://api.speechtotext.com/convert'; // Replace with actual endpoint
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer YOUR_API_KEY' // Replace with actual API key
+                    },
+                    body: JSON.stringify({ audio: base64data })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('transcription').textContent = data.transcription;
+                })
+                .catch(error => {
+                    console.error('Error converting speech to text:', error);
+                });
+            };
+        }
+
+        function startCountdown(duration) {
+            const timerDisplay = document.getElementById('timer');
+            let timeRemaining = duration;
+
+            countdownInterval = setInterval(() => {
+                const minutes = Math.floor(timeRemaining / 60); 
+                const seconds = timeRemaining % 60;
+
+                timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                    stopRecording();
+                    alert('Time is up!');
+                }
+
+                timeRemaining--;
+            }, 1000);
+        }
+
+        function showPart(part) {
+            document.getElementById('part1').style.display = 'none';
+            document.getElementById('part2').style.display = 'none';
+            document.getElementById('part3').style.display = 'none';
+            document.getElementById(part).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/logo_EXE.png?v=1741569587635" alt="Website Logo" class="logo">
+            <h1>Speak Ready</h1>
+        </div>
+        <nav class="navbar">
+    <div class="header">
+        <ul class="nav-menu">
+            <li>
+                <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/home-icon-silhouette.png?v=1740451121474" alt="Home">
+                <a href="#home">Trang Chủ</a>
+            </li>
+            <li>
+                <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/contact-us.png?v=1740451100491" alt="Contact">
+                <a href="#contact">Liên Hệ</a>
+            </li>
+        </ul>
+
+        <div class="top-right-icons">
+            <a href="#" class="notification-icon">
+                <i class="fas fa-bell"></i>
+            </a>
+            <a href="#" class="account-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    </header>
+    <div class="tabs">
+        <button onclick="showPart('part1')">Part 1</button>
+        <button onclick="showPart('part2')">Part 2</button>
+        <button onclick="showPart('part3')">Part 3</button>
+    </div>
+    <div id="part1" style="display: none;">
+        <!-- Part 1 content goes here -->
+    </div>
+    <div id="part2" class="test-container">
+    <!-- Bên trái: Giám khảo (Examiner) -->
+    <div class="left-section">
+        <div class="examiner">
+            <img src="https://cdn.glitch.global/1e96932a-d952-49ea-bc7d-ae0b66abcbeb/481763247_1361609005025083_2821782502470568459_n.png?v=1741569900342" alt="Examiner AI">
+            <h3>Speak Ready Examiner</h3>
+        </div>
+        <div class="question">
+            <p><strong>Question:</strong> Describe your favorite hobby. <i class="fa fa-volume-up"></i></p>
+
+
+        </div>
+    </div>
+
+    <!-- Bên phải: Nội dung bài nói + Feedback -->
+    <div class="right-section">
+        <div class="transcription">
+            <h3>Your Speech</h3>
+            <p id="transcription-text">Your transcribed text will appear here...</p>
+        </div>
+        <div class="feedback">
+            <h3>Speak Ready feedback</h3>
+            <p id="feedback-text">Feedback on your speech will appear here...</p>
+        </div>
+        
+        <div class="recording-container">
+    <!-- Nút ghi âm -->
+    <button id="recordButton" onclick="toggleRecording()">🎙️ Start Recording</button>
+
+    <!-- Bộ đếm thời gian + Audio -->
+    <div class="timer-audio">
+        <div class="timer" id="timer">5:00</div>
+        <audio id="audioPlayer" controls></audio>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+    <div id="part3" style="display: none;">
+        <!-- Part 3 content goes here -->
+    </div>
+</body>
+</html>
